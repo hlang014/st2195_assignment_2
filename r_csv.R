@@ -2,10 +2,6 @@
 #and saving the resulting output in the local folder (in CSV)
 
 library(rvest)
-#wikicars_url <- "https://en.wikipedia.org/wiki/Comma-separated_values#Example"
-#html <-read_html(wikicars_url)
-#html
-
 library(tidyverse)
 
 wikicars_url <- "https://en.wikipedia.org/wiki/Comma-separated_values#Example"
