@@ -1,0 +1,37 @@
+---
+title: "r_csv"
+output: html_document
+date: "2024-10-15"
+---
+
+```{r}
+if(!("rvest" %in% installed.packages())) {
+  install.packages("rvest")
+}
+library(rvest) #import the 'rvest' package 
+library(xml2)
+
+install.packages("magrittr")
+library(magrittr)
+```
+
+
+###Get the csv example 
+
+Load in the html, from the url specificed, as html nodes/docs object.
+```{r}
+wiki_html <- read_html("https://en.wikipedia.org/wiki/Comma-separated_values")
+```
+
+Get the csv examples under the header "Example". <br>
+Locate where the header "Example" with id='Example' is. 
+%>% is piping, where left hand side output/result is pass to right hand side functions to process
+
+```{r}
+csv_texts <-
+  wiki_html %>%
+  html_nodes(xpath = '//h2[contains(., "Example")]/following-sibling::pre') %>%
+  html_text()
+  ```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
